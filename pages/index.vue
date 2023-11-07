@@ -18,7 +18,7 @@
 // Find the number of blogs present
 const blogCountLimit = 6;
 const { data } = await useAsyncData(`content-/blog`, async () => {
-    const _posts = await queryContent('/blog').only('headline').find()
-    return Math.ceil(_posts.length / blogCountLimit);
+    const _predictions = await queryContent('preds').find()
+    return _predictions;
 });
 </script>
