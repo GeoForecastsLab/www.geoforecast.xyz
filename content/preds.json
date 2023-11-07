@@ -1,0 +1,212 @@
+[
+{
+  "date": {
+    "from": "07-11-2023",
+    "to"  : "17-12-2023"
+  },
+  "magnitude": 4.5,
+  "desc" : "Italy, San-marino",
+  "point": {
+    "lat": 43.94707282707561,
+    "long" : 12.42799193904797
+  },
+  "radius" : 120,
+  "depth"  : [15,35],
+  "direction" : 11,
+  "type" : "compression"
+},
+{
+    "date": {
+      "from": "07-11-2023",
+      "to"  : "26-12-2023"
+    },
+    "desc" : "romania, craiova",
+    "magnitude": 4.8,
+    "point": {
+       "lat" : 44.41102629795479,
+       "long": 23.782593424590086
+    },
+    "radius" : 50,
+    "depth"  : [20,60],
+    "direction" : 3,
+    "type" : "compression"
+  },
+  {
+    "date": {
+      "from": "10-11-2023",
+      "to"  : "20-11-2023"
+    },
+    "desc" : "Greece,Crity",
+    "magnitude": 4.8,
+    "point": {
+      "lat": 35.28961397932924, 
+      "long" : 25.137936077237093
+    },
+    "radius" : 20,
+    "depth"  : [20,60],
+    "direction" : 7,
+    "type" : "shift"
+  },
+
+  {
+    "date": {
+      "from": "09-11-2023",
+      "to"  : "15-11-2023"
+    },
+    "desc" : "turkey, lebanon",
+    "magnitude": 5.1,
+    "point": {
+      "lat": 34.068883155121966, 
+      "long" : 35.89840446503247
+    },
+    "radius" : 90,
+    "depth"  : [40,80],
+    "direction" : 4,
+    "type" : "shift"
+  },
+
+  {
+    "date": {
+      "from": "09-11-2023",
+      "to"  : "27-11-2023"
+    },
+    "desc" : "turkey, lebanon",
+    "magnitude": 5.1,
+    "point": {
+        "lat": 34.068883155121966, 
+        "long" : 35.89840446503247
+    },
+    "radius" : 30,
+    "depth"  : [20,30],
+    "direction" : 4,
+    "type" : "shift"
+  },
+  {
+    "date": {
+      "from": "08-11-2023",
+      "to"  : "24-11-2023"
+    },
+    "desc" : "turkey-syria",
+    "magnitude": 5.4,
+    "point": {
+      "lat": 37.18958084498208, 
+      "long" : 41.76574662238254
+    },
+    "radius" : 50,
+    "depth"  : [20,60],
+    "direction" : 7,
+    "type" : "shift"
+  },
+  {
+    "date": {
+      "from": "15-11-2023",
+      "to"  : "27-11-2023"
+    },
+    "desc" : "turkey-syria",
+    "magnitude": 4.7,
+    "point": {
+        "lat": 37.06871469062958, 
+        "long" : 38.2328953296238
+      },
+    "radius" : 40,
+    "depth"  : [10,30],
+    "direction" : 9,
+    "type" : "shift"
+  },
+  {
+    "date": {
+      "from": "apr-04-2024",
+      "to"  : "apr-28-2024"
+    },
+    "desc" : "turkey-syria",
+    "magnitude": 7.0,
+    "point": {
+        "lat": 37.06871469062958, 
+        "long" : 38.2328953296238
+    },
+    "radius" : 50,
+    "depth"  : [10,20],
+    "direction" : 7,
+     "type" : "stretching"
+  },
+  {
+    "date": {
+      "from": "feb-01-2024",
+      "to"  : "mar-13-2024"
+    },
+    "desc" : "greece, athens",
+    "magnitude": 6.0,
+    "point": {
+      "lat": 37.33654356878698, 
+      "long" : 23.427373460331452
+    },
+    "radius" : 90,
+    "depth"  : [80,100],
+    "direction" : 5,
+     "type" : "compress"
+  },
+  {
+    "date": {
+      "from": "feb-01-2024",
+      "to"  : "mar-13-2024"
+    },
+    "desc" : "rodos",
+    "magnitude": 5.3,
+    "point": {
+      "long": 36.22223301744233, 
+      "lat" : 27.450749846123706
+    },
+    "radius" : 30,
+    "depth"  : [60,90],
+    "direction" : 5,
+     "type" : "shift"
+  },
+  {
+    "date": {
+      "from": "feb-01-2024",
+      "to"  : "feb-18-2024"
+    },
+    "desc" : "turkey,lebanon",
+    "magnitude": 5.3,
+    "point": {
+        "long": 33.60573065466139, 
+        "lat" : 34.896984278688436
+    },
+    "radius" : 120,
+    "depth"  : [10,40],
+    "direction" : 8,
+     "type" : "shift"
+  },
+  {
+    "date": {
+      "from": "dec-20-2023",
+      "to"  : "jan-10-2024"
+    },
+    "desc" : "italia-cicilia",
+    "magnitude": 5.0,
+    "point": {
+      "lat": 37.45907636755037, 
+      "long" : 12.404391986537023
+    },
+    "radius" : 60,
+    "depth"  : [20,30],
+    "direction" : 4,
+     "type" : "shift"
+  },
+  {
+    "date": {
+      "from": "dec-27-2023",
+      "to"  : "jan-19-2024"
+    },
+    "desc" : "romania, craiova",
+    "magnitude": 5.0,
+    "point": {
+       "lat" : 44.41102629795390,
+       "long": 23.782593424590086
+    },
+    "radius" : 40,
+    "depth"  : [20,30],
+    "direction" : 3,
+     "type" : "compress"
+  }
+]
