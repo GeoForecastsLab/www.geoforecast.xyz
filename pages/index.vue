@@ -1,7 +1,7 @@
 <template>
     <LayoutMain>
         <Article id="data" class="!pt-0">
-            <EqPredicts :data="data" />
+            <EqList :data="data" />
         </Article>
     </LayoutMain>
 </template>

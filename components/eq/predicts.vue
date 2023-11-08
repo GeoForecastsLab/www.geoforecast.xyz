@@ -23,7 +23,7 @@
                 v-for="article in data"
                 :key="article.id"
                 >
-                    <td class="hidden md:block">
+                    <td class=" hidden md:block">
                         <p class="text-sm">EQ-{{ article.id }}</p>
                         <p class="text-xs">published: nov, 2023</p>
                     </td>
