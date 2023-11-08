@@ -1,21 +1,46 @@
 <template>
-        <div class="table border-typography_primary w-1/2">
-            <div class="table-header p-5 ">
-                <div class="table-cell">Published</div>
-                <div class="table-cell">Appx. Date</div>
-                <div class="table-cell">Appx. Mag.</div>
-                <div class="table-cell">Depth</div>
-            </div>
-            <div class="p-5 ">
-                <div class="table-row" v-for="prediction in data" :key="prediction.id">
-                    <div class="table-cell">2023, Nov</div>
-                    <div class="table-cell"> <small>{{  prediction.date.from  }} - {{  prediction.date.to  }}</small></div>
-                    <div class="table-cell"> {{  prediction.magnitude  }} </div>
-                    <div class="table-cell"> <small>{{  prediction.depth[0]  }}</small> - <small>{{   prediction.depth[1]  }}</small></div>
-                </div>
-            </div>
-        </div>
-        
+
+    <div class="relative overflow-x-auto">
+        <table class="table__eq w-full table-auto rounded-lg text-sm text-left">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+                <tr>
+                    <th scope="col" class=" hidden md:block">
+                        Case
+                    </th>
+                    <th scope="col" class="w-10">
+                        Appx. Magn.
+                    </th>
+                    <th scope="col" class="w-10">
+                        Depth 
+                    </th>
+                    <th scope="col" class="">
+                        Appx. Dates
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b " 
+                v-for="article in data"
+                :key="article.id"
+                >
+                    <td class="hidden md:block">
+                        <p class="text-sm">EQ-{{ article.id }}</p>
+                        <p class="text-xs">published: nov, 2023</p>
+                    </td>
+                    <td >
+                        {{ article.magnitude }}
+                    </td>
+                    <td >
+                        {{ article.depth[0]  }} - {{  article.depth[1]   }} km
+                    </td>
+                    <td >
+                        {{ article.date.from  }} .. {{  article.date.to   }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </template>
 
 
@@ -34,16 +59,15 @@ const props = defineProps({
 
 
 <style scoped>
-    .table {
-        @apply flex flex-col   overflow-hidden w-full bg-gray-100 rounded-lg;
+    .table__eq {
     }
 
-    .table-header {
-        @apply grid grid-cols-4 text-gray-700 mb-4 border-b font-bold bg-gray-100;
-    }
-
-    .table-row {
-        @apply grid grid-cols-4 mb-1;
+    .table__eq td {
+        @apply px-4 py-3 sm:px-6 lg:px-8 ;
     }
     
+    .table__eq th {
+        @apply px-4 py-3 sm:px-6 lg:px-8 ;
+    }
+
 </style>
