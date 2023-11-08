@@ -22,13 +22,13 @@
                             <a href="#" class="menu_item_a ">Contact</a>
                         </li>
                         <li>
-                            <a href="#" class="menu_item_a ">Disclaimer</a>
+                            <NuxtLink to="/content/disclaimer" class="menu_item_a" >Disclaimer</NuxtLink>
                         </li>
                         <li>
                             <a href="#" class="menu_item_a ">Privacy</a>
                         </li>
                         <li>
-                            <a href="#" class="menu_item_a ">Terms</a>
+                            <NuxtLink to="/content/terms" class="menu_item_a" >Terms</NuxtLink>
                         </li>
                     </ul>
                 </div>
