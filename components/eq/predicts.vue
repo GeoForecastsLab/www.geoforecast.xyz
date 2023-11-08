@@ -1,86 +1,49 @@
 <template>
-    <ul class="items grid text-typography_primary">
-        <li class="item">
-            <div class="wrapper">
-                <header>
-                    <h3 class="title" >
-                        <NuxtLink :to=" '/f1' " class="hover:text-brand_primary">
-                            M 7.8 Kaikōura Mon, Nov 14 2016
-                        </NuxtLink>
-                    </h3>
-                    <p class="time">Published: 27 April 2023</p>
-                </header>
-                <div class="">
-                    At 4.37 a.m., on the 2 September 2016, a magnitude 7.1 earthquake struck off 
-                    the northern East Coast of North Island, 125 north-east of Te Araroa.
+        <div class="table border-typography_primary w-1/2">
+            <div class="table-header p-5 ">
+                <div class="table-cell">Published</div>
+                <div class="table-cell">Appx. Date</div>
+                <div class="table-cell">Appx. Mag.</div>
+                <div class="table-cell">Depth</div>
+            </div>
+            <div class="p-5 ">
+                <div class="table-row" v-for="prediction in data" :key="prediction.id">
+                    <div class="table-cell">2023, Nov</div>
+                    <div class="table-cell"> <small>{{  prediction.date.from  }} - {{  prediction.date.to  }}</small></div>
+                    <div class="table-cell"> {{  prediction.magnitude  }} </div>
+                    <div class="table-cell"> <small>{{  prediction.depth[0]  }}</small> - <small>{{   prediction.depth[1]  }}</small></div>
                 </div>
             </div>
-        </li>
-
-        <li class="item">
-            <div class="wrapper">
-                <header>
-                    <h3 class="title" >
-                        <NuxtLink :to=" '/f1' " class="hover:text-brand_primary">
-                            M 7.8 Kaikōura Mon, Nov 14 2016
-                        </NuxtLink>
-                    </h3>
-                    <p class="time">Published: 27 April 2023</p>
-                </header>
-                <div class="">
-                    At 4.37 a.m., on the 2 September 2016, a magnitude 7.1 earthquake struck off 
-                    the northern East Coast of North Island, 125 north-east of Te Araroa.
-                </div>
-            </div>
-        </li>
+        </div>
         
-        <li class="item">
-            <div class="wrapper">
-                <header>
-                    <h3 class="title" >
-                        <NuxtLink :to=" '/f1' " class="hover:text-brand_primary">
-                            M 7.8 Kaikōura Mon, Nov 14 2016
-                        </NuxtLink>
-                    </h3>
-                    <p class="time">Published: 27 April 2023</p>
-                </header>
-                <div class="">
-                    At 4.37 a.m., on the 2 September 2016, a magnitude 7.1 earthquake struck off 
-                    the northern East Coast of North Island, 125 north-east of Te Araroa.
-                </div>
-            </div>
-        </li>        
-
-    </ul>
 </template>
 
 
 <script setup>
-// Find the number of blogs present
-const blogCountLimit = 6;
-const { data } = await useAsyncData(`content-/blog`, async () => {
-    const _posts = await queryContent('/blog').only('headline').find()
-    return Math.ceil(_posts.length / blogCountLimit);
+const props = defineProps({
+    data: {
+        type: Array,
+        required: true
+    },
+    message: {
+        type: String,
+        default: "There are no posts right now, but stay tuned for newer releases in the future."
+    }
 });
 </script>
 
 
 <style scoped>
-    .items {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        @apply w-full md:w-1/2;
+    .table {
+        @apply flex flex-col   overflow-hidden w-full bg-gray-100 rounded-lg;
     }
 
-    .item {
-        @apply mb-10 md:col-span-5 relative rounded-md border-0 border-typography_primary   ;
+    .table-header {
+        @apply grid grid-cols-4 text-gray-700 mb-4 border-b font-bold bg-gray-100;
     }
 
-    .title {
-        @apply text-h4 leading-h3 font-semibold mb-2 ;
+    .table-row {
+        @apply grid grid-cols-4 mb-1;
     }
-    .time {
-        @apply text-sm leading-sm mb-4 text-typography_primary/75 ;
-    }
+    
 </style>

@@ -1,9 +1,7 @@
 <template>
     <article
         :class="[
-            'relative',
-            props.fullHeight ? 'full-height' : '',
-            props.forcedHeight ? 'full-height--forced' : ''
+            'relative'
         ]"
         :id="props.id"
     >
@@ -36,6 +34,6 @@ const props = defineProps({
 
 <style scoped>
     article {
-        @apply w-full md:w-1/2;
+        @apply w-full px-4 md:px-0 md:w-3/4 mx-auto;
     }
 </style>

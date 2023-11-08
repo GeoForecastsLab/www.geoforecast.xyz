@@ -1,7 +1,6 @@
 <template>
     <header class="pt-2 mb-5 pb-2 border-typography_primary mx-4">
-       
-        <nav class=" ">
+        <nav class="">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pt-2 px-4">
                 <div>
                     <h3 class="flex items-center mb-1">O.<span class="text-color_primary">F.</span>E.O.P.</h3>
@@ -19,13 +18,10 @@
                             <a href="#" class="menu_item_a ">About </a>
                         </li>
                         <li>
-                            <a href="#" class="menu_item_a ">Contact</a>
+                            <NuxtLink to="/content/contact" class="menu_item_a" >Contact</NuxtLink>
                         </li>
                         <li>
                             <NuxtLink to="/content/disclaimer" class="menu_item_a" >Disclaimer</NuxtLink>
-                        </li>
-                        <li>
-                            <a href="#" class="menu_item_a ">Privacy</a>
                         </li>
                         <li>
                             <NuxtLink to="/content/terms" class="menu_item_a" >Terms</NuxtLink>
@@ -36,6 +32,22 @@
         </nav>
 
         <div class="border-t-2 mt-3 border-typography_primary flex flex-col md:flex-row items-center md:justify-between md:text-right"></div>
+    
+
+        <!-- <div class=" pt-3 border-typography_primary flex flex-col md:flex-row items-center md:justify-between md:text-right mb-6 md:mb-8">
+            <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="blog-breadcrumb">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/"> <span itemprop="name">Home</span></a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                <span>/</span>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">Contact Us</span>
+                    <meta itemprop="position" content="2" />
+                </li>
+            </ol>
+        </div> -->
+        
     </header>
 </template>
 
