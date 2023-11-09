@@ -1,22 +1,22 @@
 <template>
     <div >
-        <svg :id="uid" :width="width + 'px'" :height="height + 'px'" role="img">
+        <svg ref="root" :width="width + 'px'" :height="height + 'px'" role="img">
         </svg>
     </div>
 </template>
 
 <script >
     import * as d3 from 'd3';
-    import { ref, getCurrentInstance } from 'vue'
-    const _width = 100;
-    const _height = 100;
+    import { ref } from 'vue'
+    const _width = 125;
+    const _height = 125;
 
 export default {
     setup() {
-        const inst = getCurrentInstance();
-        const uid = ref('svg_' + inst.uid);
-        return { uid }
+        const root = ref(null);
+        return { root }
     },
+    props: ['prediction'],
     data() {
         return {
             width: _width,
@@ -25,7 +25,8 @@ export default {
     },
     async mounted() {
         // Create an SVG container
-        const svg = d3.select("#" + this.uid);
+        const svg = d3.select(this.$refs.root);
+        const {lat, long} = this.prediction.point;
 
         let data = await d3.json(
             "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
@@ -47,6 +48,26 @@ export default {
                 }
             ]
         }
+
+        // Define the scale of the projection (you might need to adjust this based on your actual SVG size)
+        const scale = Math.min(_width, _height) / 2; // or any other scale factor you find appropriate
+
+        // Calculate center positions
+        const translateX = _width / 2;
+        const translateY = _height / 2;
+           
+            // Define the projection (stereographic projection centered on Paris)
+        const projection = d3
+                .geoAlbers()
+                .scale(scale) // Use the scale factor calculated above
+                .translate([translateX, translateY]) // Center the map in the SVG
+                .center([long,lat]) // Paris coordinates (longitude, latitude)
+                .rotate([0, 0]); // Rotate the globe to center the specified lat, long
+            ; 
+
+
+            // Create a path generator based on the projection
+        const path = d3.geoPath().projection(projection);        
 
         function drawCircle(customWidth, customHeight) {
             // Calculate the radius as half the smaller of the two dimensions
@@ -84,29 +105,18 @@ export default {
         }
 
 
-        function drawGeo(customWidth, customHeight) {
-            // Define the scale of the projection (you might need to adjust this based on your actual SVG size)
-            const scale = Math.min(customWidth, customHeight) / 2; // or any other scale factor you find appropriate
+        function drawRedDot() {
+            // Convert the longitude and latitude to x and y coordinates
+            const [x, y] = projection([long, lat]);
 
-            // Calculate center positions
-            const translateX = customWidth / 2;
-            const translateY = customHeight / 2;
-        
-            // Define the projection (stereographic projection centered on Paris)
-            const projection = d3
-                .geoAlbers()
-                .scale(scale) // Use the scale factor calculated above
-                .translate([translateX, translateY]) // Center the map in the SVG
-                .center([2.3522, 48.8566]) // Paris coordinates (longitude, latitude)
-                .rotate([-2.3522, 0]) // Rotate to center Paris
-                ; // Clip the back half of the sphere
-
-            // Create a path generator based on the projection
-            const path = d3.geoPath().projection(projection);
-            return path;
+            // Draw a red circle at the calculated x and y coordinates
+            svg.append('circle')
+                .attr('cx', x)
+                .attr('cy', y)
+                .attr('r', 3) // radius of the circle
+                .style('fill', 'red');
         }
 
-        const path = drawGeo(_width, _height);
         drawCircle(_width, _height);
         drawClip(_width, _height);
 
@@ -117,11 +127,12 @@ export default {
             .attr("class", "country")
             .attr("d", path)
             .style("fill", "#d7e8bd") // Replace with your preferred color
-            .attr("clip-path", "url(#clip)"); // Apply the clipPath to each country                     
+            .attr("clip-path", "url(#clip)"); // Apply the clipPath to each country  
+            
+            drawRedDot();
     },
     unmounted() {
-        const uid = this.uid;
-        const svg = d3.select("#" + uid);
+        const svg = d3.select(this.$refs.root);
         svg.remove();
     }
 }

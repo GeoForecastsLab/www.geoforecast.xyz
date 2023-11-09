@@ -1,29 +1,52 @@
 <template>
-    <div class="relative overflow-x-auto border-">
+    <section class="relative flex overflow-x-auto flex-col	">
         <div
             v-for="article in data"
             :key="article.id"
-            class="mb-4 pb-3 border-b flex flex-nowrap w-full  md:w-1/2 "
+            class="card  "
         >
 
-        <EqPred class="my-auto mx-5" ></EqPred>
-
         <div>
-                <div class="mb-2">
-                    <h5>EQ-{{ generateMnemonicID(article) }}</h5>
-                    <small>Published: Nov, 2023</small>
-                </div>
-                <div class="row">
-                    <p>Date: approx. {{ article.date.from }} - {{ article.date.to }}</p>
-                    <p>Magnitude: {{ article.magnitude }}</p>
-                    <p>Depth: approx. {{ article.depth[0] }} - {{ article.depth[1] }} km</p>
-                </div>
-            </div>
+            <EqPred class="media" :prediction="article"></EqPred>
         </div>
-    </div>    
+
+        <div class="body">
+                <div class="body_title">
+                    <h4>EQ-{{ generateMnemonicID(article) }}, M{{ article.magnitude }} </h4>
+                </div>
+                <div class="body_content">
+                    <p>
+                        <strong>When:</strong> between approx. {{ formatDate(article.date.from) }} and {{ formatDate(article.date.to) }}
+                    </p>
+                    <p>
+                        <strong>Approximate magnitude:</strong> around {{ article.magnitude }}
+                    </p>
+                    <p>
+                        <strong>Depth:</strong> ranging from {{ article.depth[0] }} to {{ article.depth[1] }} kilometers.
+                    </p>
+                    <p>
+                        <strong>Location:</strong> ranging 100 km around ({{ article.point.lat }}, {{ article.point.long }})
+                    </p>
+                </div>
+
+                <div class="body_footer ">
+                    <div class="flex items-center">
+                        <IconsDate/><p>1st Mar 2023</p>
+                    </div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <IconsTags />
+                        <p>algorithm=v0.1</p><p>vercel</p>
+                    </div>
+                </div>
+        </div>
+
+
+        </div>
+    </section>    
 </template>
 
 <script setup>
+
 const props = defineProps({
     data: {
         type: Array,
@@ -41,15 +64,42 @@ const generateMnemonicID = function(prediction) {
   const year = dateParts[0].substring(2);
   const month = dateParts[1];
   const day = dateParts[2];
+  return `${year}${month}${day}`;
+}
 
-  const mnemonicID = `${year}${month}${day}`;
-  return mnemonicID;
+function formatDate(time) {
+    const date = new Date(time);    
+    const year = date.toLocaleString("default", { year: "numeric" });
+    const month = date.toLocaleString("default", { month: "long" });
+    const day = date.toLocaleString("default", { day: "numeric" });
+    return `${month} ${day}, ${year}`;
 }
 
 </script>
 
 <style scoped>
-    .row {
+    .card {
+        @apply mb-4 pb-3 border-b  flex flex-nowrap w-full ;
+    }
+
+    .media {
+        @apply my-auto mx-5 ;
+    }
+
+    .body {
+        @apply sm:col-span-7 p-5 ;
+    }
+    .body_title {
         @apply mb-2 ;
+    }
+    .body_content {
+        @apply mb-2 ;
+    }
+
+    .body_footer {
+        @apply text-black mt-4 mb-1 md:flex md:space-x-6 ;
+    }
+    .body_footer p {
+        @apply text-sm;
     }
 </style>
