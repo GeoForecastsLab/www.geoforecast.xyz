@@ -14,6 +14,17 @@
                 <div class="body_title">
                     <h4>EQ-{{ generateMnemonicID(article) }}, M{{ article.magnitude }} </h4>
                 </div>
+
+                <div class="body_footer ">
+                    <div class="flex items-center">
+                        <IconsDate/><p>1st Mar 2023</p>
+                    </div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <IconsTags />
+                        <p>algorithm=v0.1</p><p>confirmed</p>
+                    </div>
+                </div>
+
                 <div class="body_content">
                     <p>
                         <strong>When:</strong> between approx. {{ formatDate(article.date.from) }} and {{ formatDate(article.date.to) }}
@@ -25,19 +36,11 @@
                         <strong>Depth:</strong> ranging from {{ article.depth[0] }} to {{ article.depth[1] }} kilometers.
                     </p>
                     <p>
-                        <strong>Location:</strong> ranging 100 km around ({{ article.point.lat }}, {{ article.point.long }})
+                        <strong>Location:</strong> ranging 100 km around {{ nameOfPlace }} ({{ article.point.lat }}, {{ article.point.long }})
                     </p>
                 </div>
 
-                <div class="body_footer ">
-                    <div class="flex items-center">
-                        <IconsDate/><p>1st Mar 2023</p>
-                    </div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <IconsTags />
-                        <p>algorithm=v0.1</p><p>vercel</p>
-                    </div>
-                </div>
+
             </div>
 
         </div>
@@ -74,6 +77,7 @@ function formatDate(time) {
     return `${month} ${day}, ${year}`;
 }
 
+
 </script>
 
 <style scoped>
@@ -89,16 +93,17 @@ function formatDate(time) {
         @apply sm:col-span-7 p-5 ;
     }
     .body_title {
-        @apply mb-2 ;
+        @apply my-0 ;
     }
     .body_content {
         @apply mb-2 ;
     }
 
     .body_footer {
-        @apply text-black mt-4 mb-1 md:flex md:space-x-6 ;
+        @apply text-black my-2  md:flex md:space-x-6 ;
     }
+
     .body_footer p {
-        @apply text-sm;
+        @apply text-sm my-0;
     }
 </style>
