@@ -3,14 +3,14 @@
         <div
             v-for="article in data"
             :key="article.id"
-            class="card  "
+            class="card"
         >
 
-        <div>
-            <EqPred class="media" :prediction="article"></EqPred>
-        </div>
+            <div>
+                <EqPred class="media" :prediction="article"></EqPred>
+            </div>
 
-        <div class="body">
+            <div class="body">
                 <div class="body_title">
                     <h4>EQ-{{ generateMnemonicID(article) }}, M{{ article.magnitude }} </h4>
                 </div>
@@ -38,8 +38,7 @@
                         <p>algorithm=v0.1</p><p>vercel</p>
                     </div>
                 </div>
-        </div>
-
+            </div>
 
         </div>
     </section>    

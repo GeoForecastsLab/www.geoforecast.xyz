@@ -32,23 +32,6 @@ export default {
             "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
         );
 
-        let geoJson = {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [2.3522, 48.8566]
-                },
-                "properties": {
-                    "name": "Paris",
-                    "country": "France"
-                }
-                }
-            ]
-        }
-
         // Define the scale of the projection (you might need to adjust this based on your actual SVG size)
         const scale = Math.min(_width, _height) / 2; // or any other scale factor you find appropriate
 
@@ -104,7 +87,6 @@ export default {
                 .attr("r", radius); // This radius should match the circle used for the globe
         }
 
-
         function drawRedDot() {
             // Convert the longitude and latitude to x and y coordinates
             const [x, y] = projection([long, lat]);
@@ -129,7 +111,7 @@ export default {
             .style("fill", "#d7e8bd") // Replace with your preferred color
             .attr("clip-path", "url(#clip)"); // Apply the clipPath to each country  
             
-            drawRedDot();
+        drawRedDot();
     },
     unmounted() {
         const svg = d3.select(this.$refs.root);
