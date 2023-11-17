@@ -1,11 +1,11 @@
 <template>
-    <header class="pt-2 mb-5 pb-2 border-typography_primary mx-4">
+    <header class="pt-2 mb-5 pb-5 drop-shadow-md  bg-stone-200	 border-typography_primary ">
         <nav class="">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pt-2 px-4">
                 <div>
                     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src="~/assets/img/logo.png" class="h-8" alt="geoforecast logo" />
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap ">geoforecast</span>
+                        <span class=" self-center text-2xl font-semibold whitespace-nowrap ">geoforecast</span>
                     </a>
                 </div>
 
@@ -16,7 +16,7 @@
                     </svg>
                 </button>
                 <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white ">
+                    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
                         <li>
                             <a href="#" class="menu_item_a ">About </a>
                         </li>
@@ -34,8 +34,7 @@
             </div>
         </nav>
 
-        <div class="border-t-2 mt-3 border-typography_primary flex flex-col md:flex-row items-center md:justify-between md:text-right"></div>
-    
+        <!-- <div class=" border-t-2 mt-3 border-typography_primary flex flex-col md:flex-row items-center md:justify-between md:text-right"></div> -->
 
         <!-- <div class=" pt-3 border-typography_primary flex flex-col md:flex-row items-center md:justify-between md:text-right mb-6 md:mb-8">
             <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="blog-breadcrumb">
@@ -57,5 +56,8 @@
 <style scoped>
     .menu_item_a {
         @apply block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ;
+    }
+    .bg_my {
+        background: #f4f4f4;
     }
 </style>

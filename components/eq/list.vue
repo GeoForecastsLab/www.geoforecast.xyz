@@ -1,43 +1,49 @@
 <template>
-    <section class="relative flex overflow-x-auto flex-col	">
-        <div v-for="article in data" :key="article.id" class="card">
+    <section class="relative flex flex-row">
+        <div class="w-full h-[100vh] md:w-1/2 overflow-auto">
+            <div v-for="article in data" :key="article.id" class="card">
 
-            <div>
-                <EqMap class="media" :prediction="article" />
-            </div>
-
-            <div class="body">
-
-                <div class="body_title">
-                    <h4>EQ-{{ generateMnemonicID(article) }}, M{{ article.magnitude }} </h4>
+                <div class="card_media">
+                    <EqGlobView class="media_object" :prediction="article" />
                 </div>
 
-                <div class="body_footer ">
-                    <div class="flex items-center">
-                        <IconsDate/><p>1st Mar 2023</p>
+                <div class="body">
+
+                    <div class="body_title">
+                        <h4>EQ-{{ generateMnemonicID(article) }}, M{{ article.magnitude }} </h4>
                     </div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <IconsTags />
-                        <p>Algo v1</p><p>Confirmed</p>
+
+                    <div class="body_header ">
+                        <div class="flex items-center">
+                            <IconsDate/><p>1st Mar 2023</p>
+                        </div>
+
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <IconsTags />
+                            <p>Algo v1</p>
+                            <!-- <p>Confirmed</p> -->
+                        </div>
+                    </div>
+
+                    <div class="body_content">
+                        <p>
+                            <strong>When:</strong> between approx. {{ formatDate(article.date.from) }} and {{ formatDate(article.date.to) }}
+                        </p>
+                        <p>
+                            <strong>Approximate magnitude:</strong> around {{ article.magnitude }}
+                        </p>
+                        <p>
+                            <strong>Depth:</strong> ranging from {{ article.depth[0] }} to {{ article.depth[1] }} kilometers.
+                        </p>
+                        <p>
+                            <strong>Location:</strong> ranging 100 km around {{ nameOfPlace }} ({{ article.point.lat }}, {{ article.point.long }})
+                        </p>
                     </div>
                 </div>
-
-                <div class="body_content">
-                    <p>
-                        <strong>When:</strong> between approx. {{ formatDate(article.date.from) }} and {{ formatDate(article.date.to) }}
-                    </p>
-                    <p>
-                        <strong>Approximate magnitude:</strong> around {{ article.magnitude }}
-                    </p>
-                    <p>
-                        <strong>Depth:</strong> ranging from {{ article.depth[0] }} to {{ article.depth[1] }} kilometers.
-                    </p>
-                    <p>
-                        <strong>Location:</strong> ranging 100 km around {{ nameOfPlace }} ({{ article.point.lat }}, {{ article.point.long }})
-                    </p>
-                </div>
             </div>
-
+        </div>
+        <div class="md:w-1/2">
+            <EqMap />
         </div>
     </section>    
 </template>
@@ -77,11 +83,14 @@ function formatDate(time) {
 
 <style scoped>
     .card {
-        @apply mb-4 pb-3 border-b  flex flex-nowrap w-full ;
+        @apply mb-4 pb-3 border-b flex flex-nowrap w-full flex-col md:flex-row ;
     }
 
-    .media {
-        @apply my-auto mx-5 ;
+    .card_media {
+        @apply flex flex-wrap content-center justify-center;
+    }
+
+    .media_object {
     }
 
     .body {
@@ -94,8 +103,8 @@ function formatDate(time) {
         @apply mb-2 ;
     }
 
-    .body_footer {
-        @apply text-black my-2  md:flex md:space-x-6 ;
+    .body_header {
+        @apply text-black mt-2 mb-5 md:flex md:space-x-6 ;
     }
 
     .body_footer p {

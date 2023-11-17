@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-    modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
+    modules: ['@nuxtjs/tailwindcss', '@nuxt/content', 'nuxt3-leaflet'],
     css: ['/assets/css/main.css'],
     ssr: true,
     experimental: {

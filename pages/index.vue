@@ -1,6 +1,6 @@
 <template>
     <LayoutMain>
-        <Article id="data" class="!pt-0">
+        <Article id="data" class="!pt-0" full-width="true">
             <EqList :data="data" />
         </Article>
     </LayoutMain>
