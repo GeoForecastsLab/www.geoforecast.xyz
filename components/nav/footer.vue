@@ -1,22 +1,11 @@
 <template>
     <footer class="pt-2 mb-5 pb-2 border-typography_primary mx-4 ">
-        <ul class="text-sm md:text-base font-medium flex mt-4 justify-between w-full md:w-1/2">
-            <li>
-                <a href="#" class="menu_item_a ">About </a>
-            </li>
-            <li>
-                <a href="#" class="menu_item_a ">Contact</a>
-            </li>
-            <li>
-                <a href="#" class="menu_item_a ">Disclaimer</a>
-            </li>
-            <li>
-                <a href="#" class="menu_item_a ">Privacy</a>
-            </li>
-            <li>
-                <a href="#" class="menu_item_a ">Terms</a>
-            </li>
-        </ul>
+        <p>
+            2023 
+        </p>
+        <p>
+            Logo created by <a href="https://www.flaticon.com/free-icons/earthquake" title="earthquake icons">fjstudio - Flaticon</a>
+        </p>
     </footer>
 </template>
 

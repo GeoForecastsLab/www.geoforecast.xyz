@@ -3,9 +3,12 @@
         <nav class="">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pt-2 px-4">
                 <div>
-                    <h3 class="flex items-center mb-1">O.<span class="text-color_primary">F.</span>E.O.P.</h3>
-                    <h5 class="text-sm hidden md:block">Open Foresee Earthquake Observations Project</h5>
+                    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="~/assets/img/logo.png" class="h-8" alt="geoforecast logo" />
+                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">geoforecast</span>
+                    </a>
                 </div>
+
                 <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-default" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
