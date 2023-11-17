@@ -5,7 +5,7 @@
                 <div>
                     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src="~/assets/img/logo.png" class="h-8" alt="geoforecast logo" />
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">geoforecast</span>
+                        <span class="self-center text-2xl font-semibold whitespace-nowrap ">geoforecast</span>
                     </a>
                 </div>
 

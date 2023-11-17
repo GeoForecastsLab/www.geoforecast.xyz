@@ -73,19 +73,13 @@
 
             <!-- Additional articles can be added as needed -->
 
-            <article class="article">
-                <h3 class="h3">8. Governing Law</h3>
-                <p>
-                    <strong>8.1 Applicable Law:</strong> These Terms are governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of law principles.
-                </p>
-            </article>
 
             <!-- Additional articles can be added as needed -->
 
             <article class="article">
-                <h3 class="h3">9. Contact Information</h3>
+                <h3 class="h3">8. Contact Information</h3>
                 <p>
-                    <strong>9.1 Contact Us:</strong> If you have any questions or concerns about these Terms, please contact us at <a href= "mailto:info@geoforecast.xyz">info@geoforecast.xyz</a>
+                    <strong>8.1 Contact Us:</strong> If you have any questions or concerns about these Terms, please contact us at <a href= "mailto:info@geoforecast.xyz">info@geoforecast.xyz</a>
                 </p>
             </article>
 
@@ -115,7 +109,7 @@
     }
 
     .h3 {
-        @apply text-2xl mb-4 pb-1 border-b;
+        @apply text-2xl mb-2 ;
     }
 
     a {

@@ -18,7 +18,7 @@
                     </div>
                     <div class="flex items-center gap-2 flex-wrap">
                         <IconsTags />
-                        <p>Algo v1</p><p>confirmed</p>
+                        <p>Algo v1</p><p>Confirmed</p>
                     </div>
                 </div>
 

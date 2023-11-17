@@ -4,7 +4,7 @@
             <h3>Contact Us</h3>
             <p>
                 If you have any questions, feedback, or concerns about
-                the "Open Earthquake Predictions Initiative," please don't hesitate 
+                the <strong>"geoforecast"</strong> initiative, please don't hesitate 
                 to reach out to us. We value your input and are here to assist you.
             </p>
 
