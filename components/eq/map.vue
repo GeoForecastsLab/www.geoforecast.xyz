@@ -7,7 +7,9 @@
 
 <script >
     import * as d3 from 'd3';
+    import * as turf from '@turf/turf';
     import { ref } from 'vue'
+
     const _width = 125;
     const _height = 125;
 
@@ -24,6 +26,7 @@ export default {
         }
     },
     async mounted() {
+        
         // Create an SVG container
         const svg = d3.select(this.$refs.root);
         const {lat, long} = this.prediction.point;
@@ -99,12 +102,71 @@ export default {
                 .style('fill', 'red');
         }
 
+        function _radius(customWidth, customHeight) {
+            // Calculate the radius in pixels
+            const radiusPixels = Math.min(customWidth, customHeight) / 2;
+
+            // Convert a reference point from SVG pixels to geographic coordinates
+            const centerGeo = projection.invert([customWidth / 2, customHeight / 2]);
+
+            // Calculate scale in kilometers per pixel
+            // Find a point 'radiusPixels' pixels to the right of the center
+            const otherPointPixels = [customWidth / 2 + radiusPixels, customHeight / 2];
+            const otherPointGeo = projection.invert(otherPointPixels);
+            const distanceKm = turf.distance(centerGeo, otherPointGeo, { units: 'kilometers' });
+
+            // Now 'radiusPixels' corresponds to 'distanceKm' kilometers
+            // This is the radius in kilometers
+            return distanceKm;
+        }
+
+        function filteredFeatures(data, customWidth, customHeight) {
+            const center = projection.invert([customWidth / 2, customHeight / 2]);
+            const radius = _radius(customWidth, customHeight);
+
+            const circle = turf.circle(center, radius, { units: 'kilometers' });
+
+            function _isWithinPolygon(polygon) {
+                const poly = turf.polygon(polygon);
+                return turf.booleanOverlap(poly, circle) || turf.booleanWithin(poly, circle);
+            }
+            
+                // Filter the features (countries) based on the circular region
+                return data.features.filter(function(feature) {
+                    const geometry = feature.geometry;
+                    function _filter() { 
+                        if (geometry.type === "MultiPolygon") {
+                            // Handle MultiPolygon geometries
+                            for (const polygon of geometry.coordinates) {                                
+                                if (_isWithinPolygon(polygon)) {
+                                    return true;
+                                }
+                            }
+                        } else if (geometry.type === "Polygon") {
+                            // Handle Polygon geometries
+                            if (_isWithinPolygon( geometry.coordinates )) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+
+                    try {
+                        return _filter();
+                    } catch(err) {
+                        console.error(err);
+                    }
+                });
+        }
+
         drawCircle(_width, _height);
         drawClip(_width, _height);
 
+        const features = filteredFeatures(data, _width, _height);
+
         // Draw the countries, applying the clip path
         svg.selectAll(".country")
-            .data(data.features)
+            .data(features)
             .enter().append("path")
             .attr("class", "country")
             .attr("d", path)

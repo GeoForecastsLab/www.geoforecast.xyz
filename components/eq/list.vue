@@ -1,16 +1,13 @@
 <template>
     <section class="relative flex overflow-x-auto flex-col	">
-        <div
-            v-for="article in data"
-            :key="article.id"
-            class="card"
-        >
+        <div v-for="article in data" :key="article.id" class="card">
 
             <div>
-                <EqPred class="media" :prediction="article"></EqPred>
+                <EqMap class="media" :prediction="article" />
             </div>
 
             <div class="body">
+
                 <div class="body_title">
                     <h4>EQ-{{ generateMnemonicID(article) }}, M{{ article.magnitude }} </h4>
                 </div>
@@ -21,7 +18,7 @@
                     </div>
                     <div class="flex items-center gap-2 flex-wrap">
                         <IconsTags />
-                        <p>algorithm=v0.1</p><p>confirmed</p>
+                        <p>Algo v1</p><p>confirmed</p>
                     </div>
                 </div>
 
@@ -39,8 +36,6 @@
                         <strong>Location:</strong> ranging 100 km around {{ nameOfPlace }} ({{ article.point.lat }}, {{ article.point.long }})
                     </p>
                 </div>
-
-
             </div>
 
         </div>
