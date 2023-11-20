@@ -47,7 +47,7 @@ const props = defineProps({
 }
 
 .sectioned_x {
-    @apply max-w-[45rem] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 lg:max-w-6xl;
+    @apply w-full md:w-[46rem] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 lg:max-w-6xl;
 }
 
 </style>

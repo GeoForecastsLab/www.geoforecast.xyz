@@ -1,6 +1,6 @@
 <template>
     <LayoutMain>
-        <Article>
+        <Section>
             <h3>Contact Us</h3>
             <p>
                 If you have any questions, feedback, or concerns about
@@ -9,7 +9,7 @@
             </p>
 
             <p>Email: <a href= "mailto:info@geoforecast.xyz">info@geoforecast.xyz</a></p>
-        </Article>
+        </Section>
     </LayoutMain>
 
 </template>

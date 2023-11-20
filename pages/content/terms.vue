@@ -1,6 +1,6 @@
 <template>
     <LayoutMain>
-        <Article class="mx-auto text-typography_primary">
+        <Section class="mx-auto text-typography_primary">
             <h2 class="text-4xlo mb-9 ">Terms of Use</h2>
 
             <article class="article">
@@ -92,7 +92,7 @@
                 If you do not agree with these Terms, please refrain from using the Initiative.</p>
                 <p class="py-6">Last Updated: Nov-08-2023</p>  
             </article>
-        </Article>        
+        </Section>        
     </LayoutMain>
 
 </template>

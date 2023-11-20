@@ -1,21 +1,27 @@
-# syntax=docker/dockerfile:1.4
 
-ARG NODE_VERSION=18.14.2
-FROM node:${NODE_VERSION}-slim as base
+FROM node:20-alpine as base
 ARG PORT=3000
 ENV NODE_ENV=production
-WORKDIR /src
+WORKDIR /geoforecast
 
-# Build
-FROM base as build
-COPY --link package.json package-lock.json ./
-COPY --link . .
-RUN npm install --omit=dev
-RUN npm run build
-RUN npm prune
+FROM base as builder
+RUN apk --no-cache add openssh g++ make python3 git
+
+COPY package*.json  /geoforecast
+COPY yarn.lock  /geoforecast
+
+RUN yarn install \
+  --prefer-offline \
+  --pure-lockfile \
+  --non-interactive \
+  --production=false 
+
+COPY . .
+
+RUN yarn build 
 
 # Run
 FROM base
 ENV PORT=$PORT
-COPY --from=build /src/.output /src/.output
+COPY --from=builder /geoforecast/.output /geoforecast/.output
 CMD [ "node", ".output/server/index.mjs" ]

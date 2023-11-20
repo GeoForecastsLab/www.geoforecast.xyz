@@ -26,7 +26,7 @@
 <style scoped>
     .map_wrapper {
         margin: 0 auto;
-        @apply w-[60vh] h-[60vh] xl:w-[92vh] xl:h-[92vh];
+        @apply w-[60vh] h-[60vh] xl:w-[88vh] xl:h-[88vh];
     }
 
 </style>

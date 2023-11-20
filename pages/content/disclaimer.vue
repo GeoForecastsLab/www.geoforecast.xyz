@@ -1,6 +1,6 @@
 <template>
     <LayoutMain>
-        <Article class="mx-auto text-typography_primary">
+        <Section class="mx-auto text-typography_primary">
             <h2 class="text-4xlo mb-9">Disclaimer</h2>
 
             <article class="article">
@@ -31,7 +31,7 @@
                     community help refine our models and improve the accuracy of predictions.
                 </p>
             </article>
-        </Article>
+        </Section>
     </LayoutMain>
 </template>
 
