@@ -10,9 +10,12 @@
     import * as turf from '@turf/turf';
     import { ref } from 'vue'
 
-    const _width = 110;
-    const _height = 110;
+    const _width = 100;
+    const _height = 100;
 
+    const colorOfEarth = "#444444";
+    const colorOfWater = "#d0d0d2";
+    
     export default {
         setup() {
             const root = ref(null);
@@ -67,7 +70,7 @@
                     .attr("cx", centerX) // Set the x-coordinate of the center of the circle
                     .attr("cy", centerY) // Set the y-coordinate of the center of the circle
                     .attr("r", radius) // Set the radius of the circle
-                    .style("fill", "#a9d6ec") // Set the fill color of the circle
+                    .style("fill", colorOfWater) // Set the fill color of the circle
                     .attr("clip-path", "url(#clip)"); // Apply the clip path if necessary
             }
 
@@ -162,7 +165,7 @@
                 .enter().append("path")
                 .attr("class", "country")
                 .attr("d", path)
-                .style("fill", "#d7e8bd") // Color of the water 
+                .style("fill", colorOfEarth) 
                 .attr("clip-path", "url(#clip)"); // Color of the earth 
                 
             drawRedDot();

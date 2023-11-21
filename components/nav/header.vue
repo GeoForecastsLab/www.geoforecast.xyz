@@ -1,11 +1,12 @@
 <template>
-    <header class="pt-2 mb-5 pb-5 drop-shadow-md  bg-stone-200	 border-typography_primary ">
-        <nav class="">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pt-2 px-4">
+    <header class="pt-2 mb-5 pb-5 border-typography_primary   ">
+        <nav class="py-2 mx-4 md:mx-10 md:mx-10">
+            <div class=" flex flex-wrap items-center justify-between mx-auto px-4">
+                
                 <div>
                     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src="~/assets/img/logo.png" class="h-8" alt="geoforecast logo" />
-                        <span class=" self-center text-2xl font-semibold whitespace-nowrap ">geoforecast</span>
+                        <span class=" self-center text-3xl font-semibold whitespace-nowrap ">geoforecast</span>
                     </a>
                 </div>
 
@@ -15,8 +16,9 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
                     </svg>
                 </button>
+                
                 <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
+                    <ul class="text-2xl font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
                         <li>
                             <a href="#" class="menu_item_a ">About </a>
                         </li>
@@ -34,22 +36,7 @@
             </div>
         </nav>
 
-        <!-- <div class=" border-t-2 mt-3 border-typography_primary flex flex-col md:flex-row items-center md:justify-between md:text-right"></div> -->
-
-        <!-- <div class=" pt-3 border-typography_primary flex flex-col md:flex-row items-center md:justify-between md:text-right mb-6 md:mb-8">
-            <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="blog-breadcrumb">
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a itemprop="item" href="/"> <span itemprop="name">Home</span></a>
-                    <meta itemprop="position" content="1" />
-                </li>
-                <span>/</span>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <span itemprop="name">Contact Us</span>
-                    <meta itemprop="position" content="2" />
-                </li>
-            </ol>
-        </div> -->
-        
+        <div class=" border-t-2 mt-3 border-gray-200 flex flex-col md:flex-row items-center md:justify-between md:text-right"></div>
     </header>
 </template>
 

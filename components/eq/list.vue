@@ -1,51 +1,53 @@
 <template>
-    <section class="relative flex flex-row">
-        <div class="w-full h-[100vh] md:w-1/2 overflow-auto">
-            <div v-for="article in data" :key="article.id" class="card">
+    <section class="relative flex flex-row justify-center	">
+        <div class="w-full h-[100vh] md:w-1/2 xl:w-2/5 overflow-auto">
+            
+            <div v-for="prediction in data" :key="prediction.id" class="card">
 
                 <div class="card_media">
-                    <EqGlobView class="media_object" :prediction="article" />
+                    <EqGlobView class="media_object" :prediction="prediction" />
                 </div>
 
                 <div class="body">
-
                     <div class="body_title">
-                        <h4>EQ-{{ generateMnemonicID(article) }}, M{{ article.magnitude }} </h4>
+                        <h4 class="brand_primary" @click="centerOnPrediction(prediction)">{{ generateMnemonic(prediction) }} </h4>
                     </div>
-
                     <div class="body_header ">
                         <div class="flex items-center">
-                            <IconsDate/><p>1st Mar 2023</p>
+                            <IconsDate />
+                            <p> {{ publishedTime(prediction) }} </p>
                         </div>
-
                         <div class="flex items-center gap-2 flex-wrap">
                             <IconsTags />
-                            <p>Algo v1</p>
+                            <p>Prediction Alg v1.0</p>
                             <!-- <p>Confirmed</p> -->
                         </div>
                     </div>
 
                     <div class="body_content">
                         <p>
-                            <strong>When:</strong> between approx. {{ formatDate(article.date.from) }} and {{ formatDate(article.date.to) }}
+                            <strong>When:</strong> between approx. <span class="body_code">{{ formatDate(prediction.date.from) }}</span> 
+                            and <span class="body_code">{{ formatDate(prediction.date.to) }}</span>
                         </p>
                         <p>
-                            <strong>Approximate magnitude:</strong> around {{ article.magnitude }}
+                            <strong>Approximate magnitude:</strong> around {{ prediction.magnitude }}
                         </p>
                         <p>
-                            <strong>Depth:</strong> ranging from {{ article.depth[0] }} to {{ article.depth[1] }} kilometers.
+                            <strong>Depth:</strong> ranging
+                             from {{ prediction.depth[0] }} to {{ prediction.depth[1] }} kilometers.
                         </p>
                         <p>
-                            <strong>Location:</strong> ranging 100 km around {{ nameOfPlace }} ({{ article.point.lat }}, {{ article.point.long }})
+                            <strong>Location:</strong> ranging 100 km around 
+                            ({{ prediction.point.lat }}, {{ prediction.point.long }})
                         </p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="md:w-1/2">
-            <EqMap />
+            <EqMap :centered="centeredPrediction"/>
         </div>
-    </section>    
+    </section>
 </template>
 
 <script setup>
@@ -61,53 +63,73 @@ const props = defineProps({
     }
 });
 
-// Function to generate a mnemonic ID
-const generateMnemonicID = function(prediction) {
-  const dateParts = prediction.date.from.split('-');
-  const year = dateParts[0].substring(2);
-  const month = dateParts[1];
-  const day = dateParts[2];
-  return `${year}${month}${day}`;
+let centeredPrediction = props.data.length > 0 ? props.data[0] : undefined;
+
+function centerOnPrediction(prediction) {
+    if (prediction) {
+        console.log(prediction);
+        this.centeredPrediction = prediction;
+    }
+}
+
+
+const generateMnemonic = function (prediction) {
+    const prefix = prediction?.geoid || '';
+    return `EQ-#${prefix}  M${prediction.magnitude} near ${prediction.desc}`;
 }
 
 function formatDate(time) {
-    const date = new Date(time);    
+    const date = new Date(time);
     const year = date.toLocaleString("default", { year: "numeric" });
     const month = date.toLocaleString("default", { month: "long" });
     const day = date.toLocaleString("default", { day: "numeric" });
     return `${month} ${day}, ${year}`;
 }
 
+function publishedTime(prediction) {
+    const ts = prediction?._ts;
+    if (ts !== undefined) {
+        const date = new Date(ts * 1000); // Convert to milliseconds
+        const month = date.toLocaleString('default', { month: 'long' }); // Full month name
+        const day = date.getDate();
+        const year = date.getFullYear();
+        return `${month} ${day}, ${year}`;        
+    }
+}
 
 </script>
 
 <style scoped>
-    .card {
-        @apply mb-4 pb-3 border-b flex flex-nowrap w-full flex-col md:flex-row ;
-    }
+.card {
+    @apply mb-4 pb-3 border-b flex flex-nowrap w-full flex-col md:flex-row;
+}
 
-    .card_media {
-        @apply flex flex-wrap content-center justify-center;
-    }
+.card_media {
+    @apply flex flex-wrap content-center justify-center;
+}
 
-    .media_object {
-    }
+.media_object {}
 
-    .body {
-        @apply sm:col-span-7 p-5 ;
-    }
-    .body_title {
-        @apply my-0 ;
-    }
-    .body_content {
-        @apply mb-2 ;
-    }
+.body {
+    @apply sm:col-span-7 p-5;
+}
 
-    .body_header {
-        @apply text-black mt-2 mb-5 md:flex md:space-x-6 ;
-    }
+.body_title {
+    @apply my-0 text-brand_primary;
+}
 
-    .body_footer p {
-        @apply text-sm my-0;
-    }
-</style>
+.body_content {
+    @apply mb-2;
+}
+
+.body_header {
+    @apply text-black mt-2 mb-5 md:flex md:space-x-6;
+}
+
+.body_code {
+    font-weight: 500
+}
+
+.body_footer p {
+    @apply text-sm my-0;
+}</style>

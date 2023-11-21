@@ -16,14 +16,14 @@ module.exports = {
         'brand_secondary': '#5eceeb',
         'brand_secondary_saturated': '#5eceeb',
         'typography_primary': '#000000',
-        'background': '#ffffff'
+        'background': '#0f172a'
       },
       fontSize: {
         'xxs': '0.5rem',
         'xs': '0.75rem',
         'sm': '0.875rem',
-        'base': '1rem',
-        'lg': '1.125rem',
+        'base': '1.125rem',
+        'lg': '1.325rem',
         'highlight': '5rem',
         'h1': '4rem',
         'h2': '3rem',

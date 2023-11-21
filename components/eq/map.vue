@@ -3,7 +3,7 @@
         <LMap
             ref="map"
             :zoom="zoom"
-            :center="[47.21322, -1.559482]"
+            :center="latLng()"
             class="mx-auto"
             >
 
@@ -21,12 +21,25 @@
     import { ref } from 'vue'
     const zoom = ref(6);
 
+    const props = defineProps({
+        centered: {
+            type: Object
+        }
+    });
+
+    function latLng() {
+        if (props.centered) {
+            const {lat,long} = props?.centered?.point;
+            return [lat, long]
+        }
+        return []
+    }
 </script>
 
 <style scoped>
     .map_wrapper {
         margin: 0 auto;
-        @apply w-[60vh] h-[60vh] xl:w-[88vh] xl:h-[88vh];
+        @apply w-[60vh] h-[60vh] md:w-[55vh] md:h-[55vh] xl:w-[85vh] xl:h-[85vh] ;
     }
 
 </style>
