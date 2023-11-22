@@ -7,5 +7,6 @@
 </template>
 
 <script setup>
-    const { data: {value: { result }} } = await useFetch(`/api/preds`);
+const response = await useFetch(`/api/preds`);
+const result = response?.data?.value?.result ?? null;
 </script>

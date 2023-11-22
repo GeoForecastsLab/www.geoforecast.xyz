@@ -32,7 +32,7 @@
             const {lat,long} = props?.centered?.point;
             return [lat, long]
        } else {
-        return []
+        return [41.9028, 12.4964] // Rome
        }
     });
     

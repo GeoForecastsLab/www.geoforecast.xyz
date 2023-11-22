@@ -32,7 +32,7 @@ Run command:
 yarn install --prefer-offline --pure-lockfile --non-interactive --production=false
 ```
 
-### Build for development 
+### Development 
 
 Run command:
 ```bash
@@ -41,7 +41,7 @@ yarn dev
 
 It runs a `watch and reload` app on 3000 port
 
-### Production build
+### Production build from sources 
 
 When running `yarn build` with the Node server preset, the result will be an entry point that launches a ready-to-run Node server.
 

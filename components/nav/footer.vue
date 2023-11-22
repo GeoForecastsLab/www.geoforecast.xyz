@@ -1,13 +1,13 @@
 <template>
     <footer class="pt-2 mb-5 pb-2 border-typography_primary mx-4">
-        <center>
+        <div class="text-center	">
             © geoforecast.xyz 2023 
-        </center>
-        <center>
+        </div>
+        <div class="text-center	">
             <small>
                 Logo created by <a href="https://www.flaticon.com/free-icons/earthquake" title="earthquake icons">fjstudio - Flaticon</a>
             </small>
-        </center>
+        </div>
         
     </footer>
 </template>

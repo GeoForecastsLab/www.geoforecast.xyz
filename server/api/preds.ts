@@ -8,14 +8,30 @@ const containerId =  process.env.COSMOS_CONTAINER_ID || 'events';
 const key =  process.env.SECONDARY_KEY;
 
 
-const cosmosClient = new CosmosClient({ 
-    endpoint,
-    key
+function lazyLoadingSupplier<T>(initializer: () => T): () => T {
+    let cached: T | null = null;
+    let hasBeenInitialized = false;
+
+    return () => {
+        if (!hasBeenInitialized) {
+            cached = initializer();
+            hasBeenInitialized = true;
+        }
+        return cached as T;
+    };
+}
+
+const cosmosClientFn = lazyLoadingSupplier(() => {
+    console.log("Initializing CosmosClient...");
+    return new CosmosClient({ 
+        endpoint,
+        key
+    });
 });
-const database = cosmosClient.database(databaseName);
-const container = database.container(containerId);
 
 async function readAllEvents() {
+    const database = cosmosClientFn().database(databaseName);
+    const container = database.container(containerId);
     return container.items.readAll().fetchAll();
 }
 
