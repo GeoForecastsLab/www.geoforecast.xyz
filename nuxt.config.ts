@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
 
-    modules: ['@nuxtjs/tailwindcss', '@nuxt/content', 'nuxt3-leaflet'],
+    modules: ['@nuxtjs/tailwindcss', '@nuxt/content', 'nuxt3-leaflet', '@pinia/nuxt'],
     css: ['/assets/css/main.css'],
     ssr: true,
     experimental: {

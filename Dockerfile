@@ -1,5 +1,6 @@
 
-FROM node:20-alpine as base
+ARG NODE_VERSION=20.9.0
+FROM node:${NODE_VERSION}-alpine as base
 ARG PORT=3000
 ENV NODE_ENV=production
 WORKDIR /geoforecast
@@ -17,7 +18,6 @@ RUN yarn install \
   --production=false 
 
 COPY . .
-
 RUN yarn build 
 
 # Run

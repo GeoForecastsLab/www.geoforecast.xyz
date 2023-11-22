@@ -3,7 +3,7 @@
         <LMap
             ref="map"
             :zoom="zoom"
-            :center="latLng()"
+            :center="center"
             class="mx-auto"
             >
 
@@ -27,13 +27,15 @@
         }
     });
 
-    function latLng() {
-        if (props.centered) {
+    const center = computed(() => {
+       if (props.centered) {
             const {lat,long} = props?.centered?.point;
             return [lat, long]
-        }
+       } else {
         return []
-    }
+       }
+    });
+    
 </script>
 
 <style scoped>

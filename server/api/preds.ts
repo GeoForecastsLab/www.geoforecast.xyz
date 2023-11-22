@@ -1,11 +1,12 @@
 
 import { CosmosClient } from "@azure/cosmos";
 
-const endpoint: string = process.env.COSMOS_ENDPOINT as string;
-const key =  process.env.AZ_SECONDARY_KEY;
+const endpoint: string = process.env.COSMOS_ENDPOINT || 'https://earthquake.documents.azure.com:443/';
+const databaseName =  process.env.COSMOS_DB || 'earthquake' ;
+const containerId =  process.env.COSMOS_CONTAINER_ID || 'events';
 
-const databaseName =  process.env.COSMOS_DB as string;
-const containerId =  process.env.COSMOS_CONTAINER_ID as string;
+const key =  process.env.SECONDARY_KEY;
+
 
 const cosmosClient = new CosmosClient({ 
     endpoint,

@@ -10,7 +10,7 @@
 
                 <div class="body">
                     <div class="body_title">
-                        <h4 class="brand_primary" @click="centerOnPrediction(prediction)">{{ generateMnemonic(prediction) }} </h4>
+                        <h4 class="brand_primary" @click="changeCenterPrediction(prediction)">{{ generateMnemonic(prediction) }} </h4>
                     </div>
                     <div class="body_header ">
                         <div class="flex items-center">
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="md:w-1/2">
-            <EqMap :centered="centeredPrediction"/>
+            <EqMap :centered="centeredOnMap"/>
         </div>
     </section>
 </template>
@@ -63,15 +63,13 @@ const props = defineProps({
     }
 });
 
-let centeredPrediction = props.data.length > 0 ? props.data[0] : undefined;
+const centeredOnMap = ref(props.data.length > 0 ? props.data[0] : undefined)
 
-function centerOnPrediction(prediction) {
+function changeCenterPrediction(prediction) {
     if (prediction) {
-        console.log(prediction);
-        this.centeredPrediction = prediction;
+        centeredOnMap.value = prediction;
     }
 }
-
 
 const generateMnemonic = function (prediction) {
     const prefix = prediction?.geoid || '';
