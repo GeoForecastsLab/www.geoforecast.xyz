@@ -1,5 +1,4 @@
 export default defineNuxtConfig({
-
     modules: ['@nuxtjs/tailwindcss', '@nuxt/content', 'nuxt3-leaflet'],
     css: ['/assets/css/main.css'],
     ssr: true,
@@ -9,6 +8,11 @@ export default defineNuxtConfig({
     router: {
         options: {
             strict: false
+        }
+    },
+    nitro: {
+        routeRules: {
+            "/json/**": { headers: { 'cache-control': `public,max-age=${60*60*24*365}` } },
         }
     },
     sourcemap: false,

@@ -5,7 +5,7 @@
                 
                 <div>
                     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                        <img src="~/assets/img/logo.png" class="h-8" alt="geoforecast logo" />
+                        <img src="/logo.png" class="h-8" alt="geoforecast logo" />
                         <span class=" self-center text-3xl font-semibold whitespace-nowrap ">geoforecast</span>
                     </a>
                 </div>
@@ -43,8 +43,5 @@
 <style scoped>
     .menu_item_a {
         @apply block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ;
-    }
-    .bg_my {
-        background: #f4f4f4;
     }
 </style>

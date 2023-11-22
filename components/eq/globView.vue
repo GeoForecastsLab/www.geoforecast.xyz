@@ -33,9 +33,7 @@
             const svg = d3.select(this.$refs.root);
             const {lat, long} = this.prediction.point;
 
-            let data = await d3.json(
-                "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
-            );
+            let data = await d3.json("/json/world.geojson");
 
             // Define the scale of the projection (you might need to adjust this based on your actual SVG size)
             const scale = Math.min(_width, _height) / 2; // or any other scale factor you find appropriate
@@ -102,7 +100,6 @@
                     .attr('r', 3) // radius of the circle
                     .style('fill', 'red');
             }
-
 
             drawCircle(_width, _height);
             drawClip(_width, _height);

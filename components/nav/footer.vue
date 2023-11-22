@@ -1,5 +1,5 @@
 <template>
-    <footer class="pt-2 mb-5 pb-2 border-typography_primary mx-4">
+    <footer class="pt-2 mb-5 pb-2 mx-4">
         <div class="text-center	">
             © geoforecast.xyz 2023 
         </div>
