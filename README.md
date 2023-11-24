@@ -4,7 +4,6 @@
 ## www.geoforecast.xyz 
 
 This is an app to support www.geoforecast.xyz 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 
 ### Quick Start 
@@ -23,7 +22,7 @@ Run dev:
 yarn dev
 ```
 
-It runs a `watch and reload` app on 3000 port
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 
 ### Production build from sources 
@@ -40,16 +39,13 @@ It respects the following runtime environment variables:
 - NITRO_HOST or HOST (defaults to '0.0.0.0')
 - NITRO_SSL_CERT and NITRO_SSL_KEY - if both are present, this will launch the server in HTTPS mode. In the vast majority of cases, this should not be used other than for testing, and the Nitro server should be run behind a reverse proxy like nginx or Cloudflare which terminates SSL.
 
-
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
 
 ## Env variables 
 
 App requires several environment variables to be app and running.
 
-- SECONDARY_KEY - Azure access key, **not default** 
-
+- SECONDARY_KEY - Azure access key for predictons, **not default** 
 
 ## Build docker 
 
@@ -59,3 +55,7 @@ To build a production ready optimized image just run:
 ```bash
 docker build -t ${TAG_NAME} .
 ```
+
+## Contact 
+
+If you have any questions or concerns, please contact us at <a href= "mailto:info@geoforecast.xyz">info@geoforecast.xyz</a>
