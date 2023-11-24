@@ -24,7 +24,7 @@ App requires several environment variables to be app and running.
 ## Sources  
 
 If there is a need to build it from sources, make sure prerequisites:
- - node 20.9.0
+ - node 20.9.0 (for example by: nvm use v20.9.0)
  - latest yarn 
 
 Run command:

@@ -23,15 +23,17 @@ function lazyLoadingSupplier<T>(initializer: () => T): () => T {
 
 const cosmosClientFn = lazyLoadingSupplier(() => {
     console.log("Initializing CosmosClient...");
-    return new CosmosClient({ 
+    const client = new CosmosClient({ 
         endpoint,
         key
     });
+    const database = client.database(databaseName);
+    const container = database.container(containerId);
+    return { client, container }
 });
 
 async function readAllEvents() {
-    const database = cosmosClientFn().database(databaseName);
-    const container = database.container(containerId);
+    const {container} = cosmosClientFn();
     return container.items.readAll().fetchAll();
 }
 

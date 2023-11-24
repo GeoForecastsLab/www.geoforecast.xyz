@@ -13,7 +13,9 @@
                 layer-type="base"
                 name="OpenStreetMap"
             />
-            </LMap>
+
+            <LCircle :lat-lng="center" :radius="100 * 1000" color="blue"/>
+        </LMap>
     </section>
 </template>
 

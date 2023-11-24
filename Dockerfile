@@ -9,10 +9,8 @@ WORKDIR /geoforecast
 
 FROM base as builder
 RUN apk --no-cache add openssh g++ make python3 git
-
 COPY package*.json  /geoforecast
 COPY yarn.lock  /geoforecast
-
 RUN yarn install \
   --prefer-offline \
   --pure-lockfile \
