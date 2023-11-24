@@ -1,6 +1,7 @@
 # App
 
 This is an app to support www.geoforecast.xyz 
+
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Build docker 
@@ -16,10 +17,8 @@ docker build -t ${TAG_NAME} .
 
 App requires several environment variables to be app and running.
 
-- SECONDARY_KEY - Azure access key, **not default** 
-- COSMOS_ENDPOINT - endoint to the CosmosDb database that contains all predictions, default: `https://earthquake.documents.azure.com:443/` 
-- COSMOS_CONTAINER_ID - cosmosdb container id, default: `events`
-- COSMOS_DB - cosmosdb database name, default: `earthquake`
+- SECONDARY_KEY - Azure access key to outgoing predictions, **no default** 
+
 
 ## Sources  
 
